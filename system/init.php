@@ -12,7 +12,8 @@ $layout = file_get_contents('layout/'.$layoutfile);
 $layout = str_replace('BASIC_URI', BASIC_URI, $layout);
 
 
-$layoutParts = array();
+$layoutParts[] = new Content($db, $location);
+$layoutParts[] = new Title($db, $location);
 
 foreach($layoutParts as $layoutPart) {
 	$layoutPart->putIntoLayout($layout);	

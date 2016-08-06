@@ -1,13 +1,13 @@
 <?php
-class Content extends LayoutPart {
+class Title extends LayoutPart {
 	protected $contentObjects;
 		
 	protected function setMarkerName() {
-		$this->markerName = 'content';
+		$this->markerName = 'title';
 	}
 	
 	protected function init() {
-		$temp = 'Content';
+		$temp = $this->location->getUri().' - Musikalische Partnervermittlung';
 		
 		$this->content = $temp;
 	}
