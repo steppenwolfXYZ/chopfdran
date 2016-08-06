@@ -1,10 +1,15 @@
 <?php
 
 $db = new PDO('mysql:host=localhost;dbname='.DBNAME, DBUSER, DBPASS);
-$location = new Location($db);
+$user = new User($db);
 
-if ($location->getPrintMode()) $layoutfile = 'print.html';
-else $layoutfile = 'layout.html';
+if (isset($_POST)) {
+	require_once("system/postHandler.php");
+}
+
+$location = new Location($db, $user);
+
+$layoutfile = 'layout.html';
 
 $layout = file_get_contents('layout/'.$layoutfile);
 

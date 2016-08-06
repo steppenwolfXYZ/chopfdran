@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 06. Aug 2016 um 13:35
+-- Erstellungszeit: 06. Aug 2016 um 23:07
 -- Server-Version: 10.1.13-MariaDB
 -- PHP-Version: 7.0.8
 
@@ -29,8 +29,16 @@ SET time_zone = "+00:00";
 CREATE TABLE `person` (
   `id` int(11) NOT NULL,
   `name` char(100) NOT NULL,
-  `pw` char(255) DEFAULT NULL
+  `pw` char(255) DEFAULT NULL,
+  `mail` char(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `person`
+--
+
+INSERT INTO `person` (`id`, `name`, `pw`, `mail`) VALUES
+(1, 'georg', '$2y$10$f7u8/wZRy97n9Nby8zpttOK/qZMacUdsD6G4JRiSeJtjl6zHHexmi', 'georg.b@gmx.ch');
 
 --
 -- Indizes der exportierten Tabellen
@@ -50,7 +58,7 @@ ALTER TABLE `person`
 -- AUTO_INCREMENT für Tabelle `person`
 --
 ALTER TABLE `person`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

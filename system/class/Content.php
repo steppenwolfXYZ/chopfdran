@@ -1,15 +1,16 @@
 <?php
 class Content extends LayoutPart {
-	protected $contentObjects;
+	protected $contentObject;
 		
 	protected function setMarkerName() {
 		$this->markerName = 'content';
 	}
 	
 	protected function init() {
-		$temp = 'Content';
+		$objectName = 'Page'.$this->location->getRow()['object'];
+		$this->contentObject = new $objectName($this->db, $this->location, $this->location->getUser());
 		
-		$this->content = $temp;
+		$this->content = $this->contentObject->getContent();
 	}
 }
 ?>

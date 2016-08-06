@@ -1,17 +1,128 @@
 html, body {
-	background-color: #646969;
-	width: 100%;
-	height: 100%;
+	background-color: #ffffff;
 	border: 0;
 	padding: 0;
 	margin: 0;
-	text-align: center;
+	width: 100%;
 	font-family: "trebuchet ms";
 	color: #333333;
 	}
 
-#base {
-	width: 200px;
-	height: 300px;
-	background-color: #308000;
+#banner {
+	width: 100%;
+	height: 150px;
+	background-color: #e08030;
+	margin: 0;
+	padding: 0;
 }
+
+.bannertext {
+	font-size: 90px;
+	width: 800px;
+	margin: auto;
+	padding: 10px 0;
+	color: #ffffff;
+}
+
+#wrapper {
+	margin: 0 auto;
+	width: 800px;
+}
+	
+#content {
+	margin: 10px;
+	
+}
+
+label.normal, #newprofile, span.radio {
+	width: 150px;
+	font-weight: normal;
+	float: left;
+}
+
+#newprofile {
+	margin-right: 10px;
+	width: 140px;
+}
+
+input, button {
+	border: 1px solid #e08030;
+}
+
+p.red {
+	color: #e08030;
+}
+
+.input {
+	width: 250px;
+	border-radius: 5px;
+	float: left;
+}
+
+.formline {
+	height: 35px;
+	clear: both;
+}
+
+
+
+/* helptip */
+.help-tip {
+	float: left;
+	text-align: center;
+	background-color: #e08030;
+	border-radius: 50%;
+	width: 22px;
+	height: 22px;
+	font-size: 14px;
+	line-height: 23px;
+	cursor: default;
+	margin-left: 5px;
+}
+
+.help-tip:before{
+	content:'?';
+	font-weight: bold;
+	color:#fff;
+}
+
+.help-tip:hover p{
+	display:block;
+	transform-origin: 100% 0%;
+
+	-webkit-animation: fadeIn 0.3s ease-in-out;
+	animation: fadeIn 0.3s ease-in-out;
+
+}
+
+.help-tip p{
+	display: none;
+	text-align: left;
+	background-color: #1E2021;
+	padding: 15px;
+	width: 300px;
+	border-radius: 3px;
+	color: #FFF;
+	font-size: 13px;
+	line-height: 1.4;
+	margin: -20px 0 0 30px;
+}
+
+
+@-webkit-keyframes fadeIn {
+	0% { 
+		opacity:0; 
+		transform: scale(0.6);
+	}
+
+	100% {
+		opacity:100%;
+		transform: scale(1);
+	}
+}
+
+@keyframes fadeIn {
+	0% { opacity:0; }
+	100% { opacity:100%; }
+}
+/**/

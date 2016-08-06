@@ -1,49 +1,70 @@
 <?php
 class Location extends DBObject {
-	protected $uri;
+	protected $page;
+	protected $info;
 	protected $id;
-	protected $name;
 	protected $row;
-	protected $printMode = false;
+	protected $user;
 	
-	public function __construct(PDO $db) {
+	public function __construct(PDO $db, User $user) {
 		parent::__construct($db);
 		
-		$this->uri = $_SERVER['REQUEST_URI'];
+		$this->user = $user;
+		$uri = $_SERVER['REQUEST_URI'];
 		
-		if (substr($this->uri, 0, 1) == '/') $this->uri = substr($this->uri, 1);
-		
-		if (substr($this->uri, 0, strlen(BASIC_URI)) == BASIC_URI) {
-			$this->uri = trim(substr($this->uri, strlen(BASIC_URI)));
-			if (substr($this->uri, 0, 1) == '/') $this->uri = substr($this->uri, 1);
-			if (substr($this->uri, -1, 1) == '/') $this->uri = substr($this->uri, 0, -1);
-			if (substr($this->uri, 0, 6) == 'print/') {
-				$this->uri = substr($this->uri, 6);
-				$this->printMode = true;
+		$i = 0;		
+		$uriParts = explode('/', $uri);
+
+		if (isset($uriParts[$i])) {
+			if (empty($uriParts[$i])) $i++;
+			
+			if (isset($uriParts[$i]) && $uriParts[$i].'/' == BASIC_URI) $i++;
+			
+			if (isset($uriParts[$i])) {
+				$this->page = $uriParts[$i];
+				$i++;
 			}
-		
-			$stmt = $this->db->prepare('select id, display, content_image, img_width, img_height from navi where url = ?');
-			$stmt->execute(array($this->uri));
-			$result = $stmt->fetchAll();
+			
+			if (isset($uriParts[$i])) {
+				$this->info = $uriParts[$i];
+			}
+				
+			$result = $this->getNaviRow($this->page);
 			if (empty($result)) {
 				$this->id = 0;
 				$this->name = '';
+				$this->setDefaultPage();
 			} else {
-				$this->id = $result[0]['id'];
-				$this->name = utf8_encode($result[0]['display']);
-				$this->row = $result[0];
+				$this->id = $result['id'];
+				$this->row = $result;
 			}
-		} // else exception	
+		}
+	}
+	
+	private function setDefaultPage() {
+		if ($this->user->isLoggedIn()) {
+			$result = $this->getNaviRow('start');
+			$this->id = $result['id'];
+			$this->row = $result;
+		} else {
+			$result = $this->getNaviRow('login');
+			$this->id = $result['id'];
+			$this->row = $result;
+		}
+	}
+	
+	private function getNaviRow($url) {
+		$stmt = $this->db->prepare('select id, object, name from page where url = ?');
+		$stmt->execute(array($url));
+		$result = $stmt->fetchAll();
+		if (empty($result)) return array();
+		else return $result[0];
 	}
 	
 	public function getId() { return $this->id; }
-	public function getUri() { return $this->uri; }
-	public function getName() { return $this->name; }
+	public function getPage() { return $this->page; }
+	public function getInfo() { return $this->info; }
 	public function getRow() { return $this->row; }
-	public function getPrintMode() { return $this->printMode; }
-	
-	public function getPrintLink() {
-		return '/'.BASIC_URI.'/print/'.$this->uri;
-	}
+	public function getUser() { return $this->user; }
 }
 ?>
