@@ -14,8 +14,10 @@ switch($mode) {
 	case 'person':
 	case 'project':
 		require_once("system/ajax/add_entry.php");
+		break;
 	case 'project_add':
 		require_once("system/ajax/add_project.php");
+		break;
 }
 
 ?>

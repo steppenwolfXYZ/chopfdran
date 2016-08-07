@@ -4,14 +4,14 @@ html, body {
 	padding: 0;
 	margin: 0;
 	width: 100%;
-	font-family: "trebuchet ms";
+	font-family: "trebuchet ms", sans-serif;
 	color: #333333;
 	}
 
 #banner {
 	width: 100%;
 	height: 150px;
-	background-color: #DC0B7D;
+	background-color: #e08030;
 	padding: 0;
 	margin: 0;
 }
@@ -54,12 +54,28 @@ label.normal, #newprofile, span.radio {
 	width: 140px;
 }
 
+.dummy {
+	display: none;
+}
+
 input, button, select, textarea {
-	border: 1px solid #DC0B7D;
+	border: 1px solid #e08030;
+}
+
+.form_button {
+	background-color: #e08030;
+	border-radius: 3px;
+	border: 1px solid #404040;
+	color: #ffffff;
+	width: 100px;
+}
+
+.cancel_button {
+	background-color: #a0a0a0;
 }
 
 p.red {
-	color: #DC0B7D;
+	color: #e08030;
 }
 
 .input {
@@ -83,8 +99,20 @@ textarea {
 	clear: both;
 }
 
+@media only screen and (max-width: 420px) {
+    .formline {
+        height: 60px;
+    }
+	.formline.textarea {
+		height: 220px
+	}
+	#additionalInstrumentation .formline {
+		height: 35px;
+	}
+}
+
 .error {
-	background-color: #ff7bc3;
+	background-color: #ffc080;
 }
 
 h2.formtitle {
@@ -101,7 +129,7 @@ span.errormessage {
 .help-tip {
 	float: left;
 	text-align: center;
-	background-color: #DC0B7D;
+	background-color: #e08030;
 	border-radius: 50%;
 	width: 22px;
 	height: 22px;
@@ -112,7 +140,7 @@ span.errormessage {
 }
 
 .help-tip:before{
-	content:'?';
+	content: '?';
 	font-weight: bold;
 	color:#fff;
 }
@@ -178,7 +206,7 @@ span.errormessage {
 }
 
 .project_content {
-	background-color: #ff7bc3;
+	background-color: #ffc080;
 	border-radius: 5px;
 	overflow: hidden;
 	margin: 0;
@@ -196,6 +224,23 @@ span.errormessage {
 .project_status p {
 	line-height: 30px;
 	color: #ffffff;
+	float: left;
+	margin: 0 0 0 10px;
+}
+
+.status_light {
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	margin-top: 5px;
+	float: left;
+}
+
+.status_light.status_yes {
+	background-color: #00c060;
+}
+.status_light.status_no {
+	background-color: #ffff50;
 }
 
 .project_box h3 {
@@ -205,12 +250,12 @@ span.errormessage {
 	width: 198px;
 }
 
-.project_box p {
+.project_content p {
 	clear: both;
 }
 
 .project_content:hover {
-	background-color: #DC0B7D;
+	background-color: #e08030;
 	color: #ffffff;
 }
 
@@ -234,4 +279,8 @@ a.project_add:hover, a.project_add:active {
 	background-color: #404040;
 	color: #ffffff;
 	text-decoration: none;
+}
+
+#additionalInstrumentation {
+	display: none;
 }

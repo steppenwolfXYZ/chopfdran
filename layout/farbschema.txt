@@ -3,3 +3,6 @@ Farbschemata:
 Orange:
 dark e08030;
 light e0ab59
+
+Pink:
+dark d856cd
