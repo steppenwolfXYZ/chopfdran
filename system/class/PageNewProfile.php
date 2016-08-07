@@ -2,9 +2,9 @@
 class PageNewProfile extends Page {
 		
 	protected function init() {
-		$step = $this->location->getInfo();
-		$this->content = '<form action="/'.BASIC_URI.'newprofile/'.($step + 1).'" method="post">
-		<p>Damit musicmatch funktioniert, brauchen wir einige wenige Angaben von dir.<br />F&uuml;lle diese Felder aus, danach kann es gleich losgehen.</p>
+		$this->content = '<form action="/'.BASIC_URI.'start" method="post">
+		<p>Damit m&uuml;sigm&auml;tscher funktioniert, brauchen wir einige wenige Angaben von dir.<br />F&uuml;lle diese Felder aus, danach kann es gleich losgehen.</p>
+		<h2 class="formtitle">Personalien</h2>
 		<div class="formline">
 			<label for="mail" class="normal">E-Mail</label><input type="email" name="mail" class="input" />
 			<div class="help-tip"><p>Deine E-Mail-Adresse verwendest du zum einloggen, ausserdem erh&auml;ltst du von uns nach Wunsch benachrichtigungen. Wir versenden keine unaufgeforderten Werbe-Mails und geben die Adresse auch nicht an Dritte weiter.</p></div>
@@ -33,7 +33,21 @@ class PageNewProfile extends Page {
 			<div class="help-tip"><p>W&auml;hle dein Passwort, welches du zum Einloggen verwendest</p></div>
 			</div>
 		<div class="formline"><label for="password_repeat" class="normal">Passwort wiederholen</label><input type="password" name="password_repeat" class="input" /></div>
-		<div class="formline"><label class="normal"></label><input type="submit" name="newprofileSubmit" value="weiter" /></div>
+		
+		<h2 class="formtitle">Instrument</h2>
+		<div class="formline">
+			<label for="instrument" class="normal">Instrument</label><select class="input" name="instrument">
+				<option value=""></option>';
+		$stmt = $this->db->prepare('select id, name from instrument order by name');
+		$stmt->execute();
+		while($row = $stmt->fetch()) {
+			$this->content .= '<option value="'.$row['id'].'">'.$row['name'].'</option>';
+		}
+		$this->content .= '</select><div class="help-tip"><p>W&auml;hle das Instrument aus, welches du beherrschst</p></div>
+			</div>
+
+		<div class="formline"><label class="normal"></label><input type="submit" name="newprofileSubmit" value="Juhu fertig!" /></div>
+		<input type="hidden" name="mode" value="person" />
 		</form>';
 		
 		$this->content .= '<div id="js"></div><script type="text/javascript" src="/'.BASIC_URI.'system/js/form.js"></script>';

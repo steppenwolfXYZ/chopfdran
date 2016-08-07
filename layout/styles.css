@@ -11,28 +11,37 @@ html, body {
 #banner {
 	width: 100%;
 	height: 150px;
-	background-color: #e08030;
-	margin: 0;
+	background-color: #DC0B7D;
 	padding: 0;
+	margin: 0;
 }
 
 .bannertext {
 	font-size: 90px;
-	width: 800px;
+	max-width: 1200px;
 	margin: auto;
-	padding: 10px 0;
+	padding: 10px 6px;
 	color: #ffffff;
 }
 
 #wrapper {
 	margin: 0 auto;
-	width: 800px;
+	max-width: 1200px;
 }
 	
 #content {
 	margin: 10px;
-	
 }
+
+@media only screen and (max-width: 700px) {
+    #banner {
+        height: 80px;
+    }
+	.bannertext {
+		font-size: 40px;
+	}
+}
+
 
 label.normal, #newprofile, span.radio {
 	width: 150px;
@@ -45,18 +54,28 @@ label.normal, #newprofile, span.radio {
 	width: 140px;
 }
 
-input, button {
-	border: 1px solid #e08030;
+input, button, select, textarea {
+	border: 1px solid #DC0B7D;
 }
 
 p.red {
-	color: #e08030;
+	color: #DC0B7D;
 }
 
 .input {
 	width: 250px;
-	border-radius: 5px;
+	border-radius: 3px;
 	float: left;
+}
+
+.formline.textarea {
+	height: 200px;
+}
+
+textarea {
+	width: 250px;
+	height: 190px;
+	
 }
 
 .formline {
@@ -64,13 +83,25 @@ p.red {
 	clear: both;
 }
 
+.error {
+	background-color: #ff7bc3;
+}
 
+h2.formtitle {
+	font-size: 18px;
+	clear: both;
+}
+
+span.errormessage {
+	font-weight: bold;
+	color: #ff4040;
+}
 
 /* helptip */
 .help-tip {
 	float: left;
 	text-align: center;
-	background-color: #e08030;
+	background-color: #DC0B7D;
 	border-radius: 50%;
 	width: 22px;
 	height: 22px;
@@ -84,6 +115,15 @@ p.red {
 	content:'?';
 	font-weight: bold;
 	color:#fff;
+}
+
+.help-tip.errormark:before {
+	content: '!';
+	font-weight: bold;
+}
+
+.help-tip.errormark {
+	background-color: #ff0000;
 }
 
 .help-tip:hover p{
@@ -126,3 +166,72 @@ p.red {
 	100% { opacity:100%; }
 }
 /**/
+
+.project_box {
+	background-color: #404040;
+	width: 250px;
+	height: 330px;
+	float: left;
+	margin: 0 15px 20px 0;
+	padding: 0;
+	border-radius: 5px;
+}
+
+.project_content {
+	background-color: #ff7bc3;
+	border-radius: 5px;
+	overflow: hidden;
+	margin: 0;
+	padding: 0 10px;
+	height: 300px;
+	width: 250px;
+}
+
+.project_status {
+	height: 30px;
+	width: 230px;
+	padding: 0 10px;
+}
+
+.project_status p {
+	line-height: 30px;
+	color: #ffffff;
+}
+
+.project_box h3 {
+	font-size: 16px;
+	font-weight: bold;
+	float: left;
+	width: 198px;
+}
+
+.project_box p {
+	clear: both;
+}
+
+.project_content:hover {
+	background-color: #DC0B7D;
+	color: #ffffff;
+}
+
+a.project_add, a.project_add:link, a.project_add:visited {
+	float: right;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	background-color: #ffffff;
+	color: #404040;
+	font-size: 24px;
+	font-weight: bold;
+	text-align: center;
+	border: 1px solid #404040;
+	padding: 0;
+	line-height: 28px;
+	margin-top: 15px
+}
+
+a.project_add:hover, a.project_add:active {
+	background-color: #404040;
+	color: #ffffff;
+	text-decoration: none;
+}

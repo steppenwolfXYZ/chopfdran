@@ -7,7 +7,7 @@ class Title extends LayoutPart {
 	}
 	
 	protected function init() {
-		$temp = $this->location->getRow()['name'].' - Musikalische Partnervermittlung';
+		$temp = utf8_encode($this->location->getRow()['name']).' - Musikalische Partnervermittlung';
 		
 		$this->content = $temp;
 	}

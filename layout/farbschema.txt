@@ -1,0 +1,5 @@
+Farbschemata:
+
+Orange:
+dark e08030;
+light e0ab59
