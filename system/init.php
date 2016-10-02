@@ -1,6 +1,6 @@
 <?php
 
-$db = new PDO('mysql:host=localhost;dbname='.DBNAME, DBUSER, DBPASS);
+$db = dbConnect();
 $user = new User($db);
 
 if (isset($_POST)) {

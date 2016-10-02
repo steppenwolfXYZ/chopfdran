@@ -15,8 +15,14 @@ switch($mode) {
 	case 'project':
 		require_once("system/ajax/add_entry.php");
 		break;
-	case 'project_add':
-		require_once("system/ajax/add_project.php");
+	case 'add_project_application':
+		require_once("system/ajax/add_project_application.php");
+		break;
+	case 'project_feedback':
+		require_once("system/ajax/project_feedback.php");
+		break;
+	case 'get_self_boxes':
+		require_once("system/ajax/get_self_boxes.php");
 		break;
 }
 

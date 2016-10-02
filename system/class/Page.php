@@ -16,5 +16,19 @@ abstract class Page extends DBObject {
 	public function getContent() {
 		return $this->content;
 	}
+	
+	protected function generateInstrumentationSelect($name) {
+		$instrumentationSelect = '<select class="input instrumentSelect" name="'.$name.'">
+				<option value=""></option>';
+		$stmt = $this->db->prepare('select id, name from instrument order by name');
+		$stmt->execute();
+		while($row = $stmt->fetch()) {
+			$instrumentationSelect .= '<option value="'.$row['id'].'">'.$row['name'].'</option>';
+		}
+		$instrumentationSelect .= '</select>';
+		
+		return $instrumentationSelect;
+	}
+
 }
 ?>

@@ -1,11 +1,33 @@
+@font-face {
+    font-family: myFont;
+    src: url(/chopfdran/font/trebuc.ttf);
+}
+@font-face {
+    font-family: myFont;
+    src: url(/chopfdran/font/trebucbd.ttf);
+	font-weight: bold;
+}
+
+@font-face {
+    font-family: banner;
+    src: url(/chopfdran/font/KozGoPro-ExtraLight.otf);
+}
+
+@font-face {
+    font-family: banner;
+    src: url(/chopfdran/font/KozGoPro-Medium.otf);
+	font-weight: bold;
+}
+
 html, body {
 	background-color: #ffffff;
 	border: 0;
 	padding: 0;
 	margin: 0;
 	width: 100%;
-	font-family: "trebuchet ms", sans-serif;
+	font-family: myFont;
 	color: #333333;
+	font-size: 13px;
 	}
 
 #banner {
@@ -22,6 +44,7 @@ html, body {
 	margin: auto;
 	padding: 10px 6px;
 	color: #ffffff;
+	font-family: banner;
 }
 
 #wrapper {
@@ -60,6 +83,7 @@ label.normal, #newprofile, span.radio {
 
 input, button, select, textarea {
 	border: 1px solid #e08030;
+	border-bottom: 2px solid #e08030;
 }
 
 .form_button {
@@ -83,15 +107,24 @@ p.red {
 	border-radius: 3px;
 	float: left;
 }
+#ownInstrument {
+	float: left;
+	width: 250px;
+}
 
 .formline.textarea {
-	height: 200px;
+	height: 220px;
 }
 
 textarea {
 	width: 250px;
 	height: 190px;
-	
+}
+textarea.description {
+	float: left;
+}
+.clear {
+	clear: both;
 }
 
 .formline {
@@ -104,7 +137,7 @@ textarea {
         height: 60px;
     }
 	.formline.textarea {
-		height: 220px
+		height: 240px
 	}
 	#additionalInstrumentation .formline {
 		height: 35px;
@@ -197,7 +230,7 @@ span.errormessage {
 
 .project_box {
 	background-color: #404040;
-	width: 250px;
+	width: 350px;
 	height: 330px;
 	float: left;
 	margin: 0 15px 20px 0;
@@ -211,13 +244,13 @@ span.errormessage {
 	overflow: hidden;
 	margin: 0;
 	padding: 0 10px;
-	height: 300px;
-	width: 250px;
+	height: 280px;
+	width: 350px;
 }
 
 .project_status {
 	height: 30px;
-	width: 230px;
+	width: 300px;
 	padding: 0 10px;
 }
 
@@ -236,13 +269,6 @@ span.errormessage {
 	float: left;
 }
 
-.status_light.status_yes {
-	background-color: #00c060;
-}
-.status_light.status_no {
-	background-color: #ffff50;
-}
-
 .project_box h3 {
 	font-size: 16px;
 	font-weight: bold;
@@ -259,23 +285,30 @@ span.errormessage {
 	color: #ffffff;
 }
 
-a.project_add, a.project_add:link, a.project_add:visited {
+a.project_add, a.project_add:link, a.project_add:visited, a.project_rate, a.project_rate:link, a.project_rate:visited {
 	float: right;
 	width: 30px;
 	height: 30px;
 	border-radius: 50%;
 	background-color: #ffffff;
 	color: #404040;
-	font-size: 24px;
+	font-size: 18px;
 	font-weight: bold;
 	text-align: center;
 	border: 1px solid #404040;
 	padding: 0;
-	line-height: 28px;
+	line-height: 35px;
 	margin-top: 15px
 }
 
-a.project_add:hover, a.project_add:active {
+a.project_rate, a.project_rate:link, a.project_rate:visited {
+	width: 60px;
+	font-size: 20px;
+	border-radius: 15px;
+	line-height: 30px;
+}
+
+a.project_add:hover, a.project_add:active, a.project_rate:hover, a.project_rate:active {
 	background-color: #404040;
 	color: #ffffff;
 	text-decoration: none;
@@ -283,4 +316,123 @@ a.project_add:hover, a.project_add:active {
 
 #additionalInstrumentation {
 	display: none;
+}
+
+div.bootstrap-workaround {
+	width: auto;
+	padding: 0;
+	margin: 0;
+}
+
+.expand {
+	width: 200;
+	margin: 0 85px;
+	color: #ffffff;
+	font-size: 16px;
+	text-align: center;
+}
+
+.feedback_line {
+	height: 70px;
+	width: 100%;
+	padding: 20px 0;
+	background-color: #ffe0c0;
+	margin: 10px 0;
+}
+
+.feedback_name, .feedback_slider_container {
+	float: left;
+	width: 180px;
+	padding: 5px;
+	margin-top: 10px;
+}
+
+.feedback_name {
+	margin-top: 0;
+}
+
+.feedback_slider_container {
+	width: 300px;
+}
+
+#feedback-slider .slider-track-high, #feedback-slider .slider-track-low, #feedback-slider .slider-tick, #feedback-slider .tick-slider-selection {
+	background: #ffc080;
+	opacity: 1;
+}
+
+#feedback-slider .slider-handle {
+	background: #e08030;
+}
+
+@media only screen and (max-width: 490px) {
+	.feedback_line {
+		height: 130px;
+		padding-top: 0;
+	}
+	
+	.feedback_name {
+		margin-bottom: 20px;
+	}
+	
+	.feedback_slider_container {
+		margin-left: 10px;
+	}
+}
+
+.projectinfo {
+	background-color: #ffc080;
+	float: left;
+	border-radius: 5px;
+	padding: 5px;
+	margin: 5px 5px 5px 0;
+}
+
+.projectcontent {
+	border-radius: 5px;
+	padding: 5px;
+	background-color: #ffc080;
+	min-height: 100px;
+	float: left;
+	width: 100%;
+}
+
+.projectstatus {
+	background-color: #404040;
+}
+.projectstatus p {
+	line-height: 30px;
+	color: #ffffff;
+	float: left;
+	margin: 0 0 0 10px;
+}
+
+.status_yes {
+	background-color: #00c060;
+}
+.status_no {
+	background-color: #ffff50;
+}
+
+.projectcontent h2 {
+	font-size: 16px;
+	font-weight: bold;
+	margin: 0 0 5px 0;
+	float: left;
+	width: 100px;
+}
+
+.applicationBox {
+	float: left;
+	max-width: 300px;
+	margin: 0 10px;
+}
+
+.applicationSubmit {
+	background-color: #e08030;
+	border-radius: 5px;
+	border: 1px solid #404040;
+	width: 150px;
+	height: 25px;
+	margin: 5px 0;
+	font-weight: bold;
 }

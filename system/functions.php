@@ -36,4 +36,22 @@ function formatDate(DateTime $date) {
 	return $date->format('d').'. '.getMonthName($date->format('m')).' '.$date->format('Y');
 }
 
+function formatDateTime(DateTime $date) {
+	return formatDate($date).' '.$date->format('H:i');
+}
+
+function explodeOr($array) {
+	$ret = '';
+	$count = 0;
+	$all = count($array);
+	foreach ($array as $string) {
+		$count ++;
+		$ret .= $string;
+		if ($count == $all) $ret .= ''; // am schluss leer
+		else if ($count == $all - 1) $ret .= ' oder ';
+		else $ret .= ', ';
+	}
+	return $ret;
+}
+
 ?>

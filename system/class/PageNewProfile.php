@@ -36,21 +36,18 @@ class PageNewProfile extends Page {
 		
 		<h2 class="formtitle">Instrument</h2>
 		<div class="formline">
-			<label for="instrument" class="normal">Instrument</label><select class="input" name="instrument">
-				<option value=""></option>';
-		$stmt = $this->db->prepare('select id, name from instrument order by name');
-		$stmt->execute();
-		while($row = $stmt->fetch()) {
-			$this->content .= '<option value="'.$row['id'].'">'.$row['name'].'</option>';
-		}
-		$this->content .= '</select><div class="help-tip"><p>W&auml;hle das Instrument aus, welches du beherrschst</p></div>
+			<label for="instrument[1]" class="normal">Instrumente</label>'.$this->generateInstrumentationSelect('instrument[1]').'
+			<div class="help-tip"><p>Was du spielst ist deine Welt, das andere aber nicht.</p></div>
 			</div>
+		<div id="additionalInstrumentation"><div class="formline dummy"><label for="instrumentationDummy" class="normal"></label>'.$this->generateInstrumentationSelect('instrumentationDummy').'</div></div>
+		<div class="formline"><label class="normal">Weitere Instrumente</label><input type="button" value="+" id="add_instrument" class="form_button" /></div>
 
-		<div class="formline"><label class="normal"></label><input type="submit" name="newprofileSubmit" value="Juhu fertig!" /></div>
+		<div class="formline"><label class="normal"><input type="button" value="Abbrechen" class="form_button cancel_button" onclick="javascript:window.location.href = \'/'.BASIC_URI.'\';" /></label><input type="submit" name="newprofileSubmit" value="Juhu fertig!" class="form_button" /></div>
 		<input type="hidden" name="mode" value="person" />
 		</form>';
 		
 		$this->content .= '<div id="js"></div><script type="text/javascript" src="/'.BASIC_URI.'system/js/form.js"></script>';
+		$this->content .= '<div id="js"></div><script type="text/javascript" src="/'.BASIC_URI.'system/js/instrumentation.js"></script>';
 	}
 }
 ?>

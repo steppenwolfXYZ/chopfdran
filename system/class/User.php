@@ -21,7 +21,7 @@ class User extends DBObject {
 	}
 	
 	public function login($mail, $pw) {
-		$stmt = $this->db->prepare("select id, name, mail, pw, title, birthdate, city, instrument_id from person where mail = ?");
+		$stmt = $this->db->prepare("select person.id, name, mail, pw, title, birthdate, city from person where mail = ?");
 		$stmt->execute(array($mail));
 		$result = $stmt->fetchAll();
 		if (empty($result)) {
@@ -29,7 +29,7 @@ class User extends DBObject {
 		} else {
 			if (password_verify($pw, $result[0]['pw'])) {
 				$this->status = $this::STATUS_LOGGED_IN;
-				$this->name = $result[0]['name'];
+				$this->name = htmlspecialchars($result[0]['name']);
 				$this->mail = $result[0]['mail'];
 				$this->userId = $result[0]['id'];
 				$this->row = $result[0];
